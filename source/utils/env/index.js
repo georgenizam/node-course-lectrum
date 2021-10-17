@@ -1,1 +1,2 @@
-export { getPort } from './getPort';
+export { getPort } from './getPort'
+export { getPassword } from './getPassword'
