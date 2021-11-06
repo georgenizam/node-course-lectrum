@@ -5,8 +5,8 @@
 **
 */
 
-const chalk = require('chalk');
+const chalk = require('chalk')
 
 module.exports = async function() {
-    console.log(chalk.red('λ'));
-};
+    console.log(chalk.red('λ'))
+}

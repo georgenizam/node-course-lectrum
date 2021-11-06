@@ -1,13 +1,15 @@
 // Core
 import express from 'express'
 import bodyParser from "body-parser"
+import session from 'express-session'
 
-import {logger, errorLogger, notFoundLogger, validationLogger, NotFoundError} from './utils'
+import {logger, errorLogger, notFoundLogger, validationLogger, NotFoundError, sessionOptions} from './utils'
 import * as routers from './routers'
 
 const app = express()
 
 app.use(bodyParser.json({limit: '10kb'}))
+app.use(session(sessionOptions))
 
 if (process.env.NODE_ENV === 'development') {
     app.use((req, res, next) => {

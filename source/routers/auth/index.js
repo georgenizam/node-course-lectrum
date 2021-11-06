@@ -8,4 +8,6 @@ const router = express.Router()
 router.post('/login', [limiter(5, 1000 * 60)], login)
 router.post('/logout', [authenticate, limiter(5, 1000 * 60)], logout)
 
+// router.post('/api/login', [limiter(5, 1000 * 60)])
+
 export {router as auth}

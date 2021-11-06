@@ -1,6 +1,6 @@
 import express from "express"
 
-import {getUsers, postUsers} from "./handlers"
+import {getUsers, postUsers} from "./route"
 import {getUserByHash, updateByHash, removeByHash} from "./hash"
 
 import {limiter, validator, authenticate} from "../../utils"

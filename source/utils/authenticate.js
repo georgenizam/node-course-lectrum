@@ -1,11 +1,12 @@
-import {getPassword} from "./env"
-
-const password = getPassword()
+import {NotFoundError} from "./errors"
 
 export const authenticate = (req, res, next) => {
-    const auth = req.header('authorization')
+    if (!req.session.user) {
+        return next(new NotFoundError('cookie not found', 401))
+    }
+    const {email} = req.session.user
 
-    if (auth && auth === password) {
+    if (email) {
         next()
     } else {
         res.status(401).json({ message: 'authentication credentials are not valid' });

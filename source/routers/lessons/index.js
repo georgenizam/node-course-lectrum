@@ -12,7 +12,7 @@ import {authenticate} from '../../utils'
 const router = express.Router()
 
 router.get('/', getLessons)
-router.post('/', [authenticate],postLessons)
+router.post('/', [authenticate], postLessons)
 
 router.get('/:lessonHash', [authenticate], getLessonsByHash)
 router.put('/:lessonHash', [authenticate], updateLessonsByHashByHash)
