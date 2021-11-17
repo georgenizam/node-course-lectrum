@@ -7,7 +7,7 @@ const server = request.agent(app)
 
 describe('login:', () => {
 
-    test('should login user and header set-cookie should be defined', async done => {
+    test('should login users and header set-cookie should be defined', async done => {
         const email = faker.internet.email()//Buffer.from(faker.internet.email()).toString('base64')
         const password = faker.internet.password() //Buffer.from('Qwerty123*').toString('base64')
 
@@ -19,7 +19,7 @@ describe('login:', () => {
         done()
     })
 
-    test('should login user and return 204 status', async done => {
+    test('should login users and return 204 status', async done => {
         const email = faker.internet.email()//Buffer.from(faker.internet.email()).toString('base64')
         const password = faker.internet.password() //Buffer.from('Qwerty123*').toString('base64')
 

@@ -18,7 +18,7 @@ describe('logout:', () => {
         done()
     })
 
-    test('should logout user and return 204 status', async done => {
+    test('should logout users and return 204 status', async done => {
         const email = Buffer.from(faker.internet.email()).toString('base64')
         const password = Buffer.from(faker.internet.password()).toString('base64')
 

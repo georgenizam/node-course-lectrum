@@ -18,7 +18,7 @@ describe('users hash read:', () => {
         done()
     })
 
-    test('should return 200 status for read user by hash', async done => {
+    test('should return 200 status for read users by hash', async done => {
         const response = await server.get('/users/1')
 
         expect(response.statusCode).toBe(200)

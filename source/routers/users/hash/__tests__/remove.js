@@ -18,7 +18,7 @@ describe('users hash remove:', () => {
         done()
     })
 
-    test('should return 204 status for remove user by hash', async done => {
+    test('should return 204 status for remove users by hash', async done => {
         const response = await server.delete('/users/1')
 
         expect(response.statusCode).toBe(204)

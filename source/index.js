@@ -1,6 +1,8 @@
-// Instruments
 import { app } from './server'
 import { getPort } from './utils'
+
+//DB
+import {connection} from './db'
 
 const PORT = getPort();
 

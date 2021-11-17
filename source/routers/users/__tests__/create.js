@@ -15,7 +15,7 @@ const server = request.agent(app)
 
 describe('users create:', () => {
 
-    test('should return 201 status for create user', async done => {
+    test('should return 201 status for create users', async done => {
         const response = await server.post('/users').send(getUser())
 
         expect(response.statusCode).toBe(201)

@@ -11,6 +11,7 @@ const router = express.Router()
 
 router.get('/', [authenticate, limiter(2, 1000 * 60)], getUsers)
 router.post('/', [validator(createUser)], postUsers)
+// router.post('/', postUsers)
 
 router.get('/:userHash', [authenticate], getUserByHash)
 router.put('/:userHash', [authenticate], updateByHash)

@@ -17,7 +17,7 @@ describe('classes hash update:', () => {
         done()
     })
 
-    test('should return 204 status for enroll user', async done => {
+    test('should return 204 status for enroll users', async done => {
         const response = await server.post('/classes/1/enroll')
 
         expect(response.statusCode).toBe(204)

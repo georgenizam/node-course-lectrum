@@ -18,7 +18,7 @@ describe('users hash update:', () => {
         done()
     })
 
-    test('should return 200 status for update user by hash', async done => {
+    test('should return 200 status for update users by hash', async done => {
         const response = await server.put('/users/1')
 
         expect(response.statusCode).toBe(200)
