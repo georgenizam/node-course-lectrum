@@ -4,6 +4,12 @@ import v4 from 'uuid/v4'
 import {users, lessons} from "./"
 
 const schema = new mongoose.Schema({
+    hash: {
+        type: String,
+        unique: true,
+        required: true,
+        default: () => v4()
+    },
     title: {
         type: String,
         required: true
@@ -11,12 +17,6 @@ const schema = new mongoose.Schema({
     description: {
         type: String,
         required: true
-    },
-    hash: {
-        type: String,
-        unique: true,
-        required: true,
-        default: () => v4()
     },
     students: [
         {
@@ -59,6 +59,9 @@ const schema = new mongoose.Schema({
     modified: Date
 })
 
-const classes = mongoose.model('classes', schema)
+schema.index({order: 1}, {name: 'order'})
+schema.index({title: 'text', description: 'text'})
 
-export {classes}
+export const classes = mongoose.model('classes', schema)
+
+classes.createIndexes()
