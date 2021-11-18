@@ -1,3 +1,5 @@
+import {Lessons} from "../../controllers"
+
 export const getClasses = (req, res) => {
   try {
     res.status(200).json({ data: [] })
@@ -6,18 +8,12 @@ export const getClasses = (req, res) => {
   }
 }
 
-export const postClasses = (req, res) => {
+export const postClasses = async (req, res) => {
   try {
-    const classTmp = {
-      "title": "Backend",
-      "description": "Backend Online Course",
-      "order": 2,
-      "duration": {
-        "started": "2019-06-19T07:44:06.353Z",
-        "closed": "2019-06-19T07:44:06.353Z"
-      }
-    }
-    res.status(201).json({ data: classTmp })
+    const model = new Lessons(req.body)
+    const {hash} = await model.create()
+
+    res.status(201).json({ hash })
   } catch (err) {
     res.status(400).json({ message: err.message })
   }

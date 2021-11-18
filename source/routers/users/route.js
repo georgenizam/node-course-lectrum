@@ -10,8 +10,8 @@ export const getUsers = (req, res) => {
 
 export const postUsers = async (req, res) => {
     try {
-        const user = new Users(req.body)
-        const data = await user.create()
+        const model = new Users(req.body)
+        const data = await model.create()
 
         res.status(201).json({data})
     } catch (err) {

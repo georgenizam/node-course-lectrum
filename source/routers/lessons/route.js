@@ -1,3 +1,5 @@
+import {Lessons} from "../../controllers"
+
 export const getLessons = (req, res) => {
     try {
         const data = []
@@ -7,12 +9,14 @@ export const getLessons = (req, res) => {
     }
 }
 
-export const postLessons = (req, res) => {
+export const postLessons = async (req, res) => {
     try {
-        const data = {
-            "hash": "10ba038e-48da-487b-96e8-8d3b99b6d18a"
-        }
-        res.status(201).json({data})
+        const model = new Lessons(req.body)
+        const data = await model.create()
+
+        console.log('data = ', data)
+
+        res.status(201).json({hash: data.hash})
     } catch (err) {
         res.status(400).json({message: err.message})
     }
