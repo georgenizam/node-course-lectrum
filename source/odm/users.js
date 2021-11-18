@@ -2,6 +2,12 @@ import mongoose from "mongoose"
 import v4 from 'uuid/v4'
 
 const schema = new mongoose.Schema({
+    hash: {
+        type: String,
+        required: true,
+        unique: true,
+        default: () => v4()
+    },
     name: {
         first: {
             type: String,
@@ -25,7 +31,8 @@ const schema = new mongoose.Schema({
         {
             email: {
                 type: String,
-                required: true
+                required: true,
+                unique: true
             },
             primary: Boolean
         }
@@ -55,12 +62,6 @@ const schema = new mongoose.Schema({
         skype:    String
     },
     notes: String,
-    hash: {
-        type: String,
-        required: true,
-        unique: true,
-        default: () => v4()
-    },
     disabled: Boolean,
     created:  {
         type: Date,
@@ -68,7 +69,10 @@ const schema = new mongoose.Schema({
     },
     modified: Date
 })
-const users = mongoose.model('users', schema)
 
-export {users}
+schema.index({'name.first': 1, 'name.last': 1}, {name: 'flName'})
+schema.index({notes: 'text'}, {name: 'notes'})
 
+export const users = mongoose.model('users', schema)
+
+users.createIndexes()

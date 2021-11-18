@@ -7,15 +7,15 @@ const debug = dg('db')
 
 const mongooseOptions = {
     promiseLibrary:    global.Promise,
-    poolSize:          50,
-    keepAlive:         30000,
-    connectTimeoutMS:  5000,
+    poolSize:          50, // кол-во одновременных коннектов к базе
+    keepAlive:         30000, // время через которое проверяется подключение к базе
+    connectTimeoutMS:  5000, //
     // reconnectTries:    Number.MAX_SAFE_INTEGER,
     // reconnectInterval: 5000,
-    useNewUrlParser:   true,
-    useFindAndModify:  false,
-    useCreateIndex:    true,
-    useUnifiedTopology: true
+    useNewUrlParser:   true, // 
+    useFindAndModify:  false, //
+    useCreateIndex:    true, //
+    useUnifiedTopology: true //
 }
 
 const connection = mongoose.connect(getConnectionString(), mongooseOptions)
