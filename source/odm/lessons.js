@@ -47,7 +47,7 @@ const schema = new mongoose.Schema({
         default: () => new Date()
     },
     modified: Date
-})
+}, {versionKey: false})
 
 schema.index({order: 1}, {name: 'order'})
 
